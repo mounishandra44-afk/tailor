@@ -136,7 +136,7 @@ GALLERY: List[GalleryItem] = [
         id="gal-men-1",
         category="men",
         title="Classic Navy Three-Piece",
-        image_url="https://images.unsplash.com/photo-1593032465171-8bdc3f6f88f0?auto=format&fit=crop&w=900&q=80",
+        image_url="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=900",
     ),
     GalleryItem(
         id="gal-men-2",

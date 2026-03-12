@@ -57,7 +57,7 @@ const FALLBACK_GALLERY = [
     category: "men",
     title: "Classic Navy Three-Piece",
     image_url:
-      "https://images.unsplash.com/photo-1593032465171-8bdc3f6f88f0?auto=format&fit=crop&w=900&q=80",
+      "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=900",
   },
   {
     id: "gal-men-2",
@@ -91,6 +91,9 @@ const FALLBACK_CONTACT = {
   map_embed_url: "https://www.google.com/maps?q=Savile+Row+London&output=embed",
   whatsapp_number: "1234567890",
 };
+
+const FALLBACK_IMAGE_URL =
+  "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=900";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
@@ -193,6 +196,11 @@ const App = () => {
     }
   };
 
+  const handleImageError = (event) => {
+    event.currentTarget.onerror = null;
+    event.currentTarget.src = FALLBACK_IMAGE_URL;
+  };
+
   return (
     <div className="tailor-app" data-testid="tailor-app-root">
       <header className="top-nav" data-testid="top-navigation">
@@ -293,6 +301,7 @@ const App = () => {
                     src={service.image_url}
                     alt={service.title}
                     className="service-image"
+                    onError={handleImageError}
                     data-testid={`service-card-image-${service.id}`}
                   />
                   <CardContent className="service-content">
@@ -354,6 +363,7 @@ const App = () => {
                             src={item.image_url}
                             alt={item.title}
                             className="gallery-image"
+                            onError={handleImageError}
                             data-testid={`gallery-item-image-${item.id}`}
                           />
                           <p className="gallery-caption" data-testid={`gallery-item-caption-${item.id}`}>
