@@ -1,143 +1,158 @@
 {
-  "identity": {
-    "name": "The Modern Atelier",
-    "tone": "Quiet Luxury, Artisanal, Timeless, Trustworthy",
-    "aesthetic": "Minimalist Grandeur",
-    "description": "A digital storefront that feels like a Savile Row studio. Clean lines, generous whitespace, tactile textures, and a focus on the human craft of tailoring."
+  "project_name": "Tailor Studio Management System",
+  "design_philosophy": {
+    "theme": "Quiet Luxury",
+    "core_concept": "Digital Atelier - Blending craftsmanship with modern efficiency",
+    "emotional_tone": "Professional, Elegant, Trustworthy, Precision",
+    "visual_style": {
+      "user_side": "Warm, inviting, high-end retail feel. Cream backgrounds, serif typography, generous whitespace.",
+      "admin_side": "Clean, productivity-focused but premium. High contrast, data-dense but not cluttered. Muted status colors."
+    }
   },
   "typography": {
     "font_family": {
-      "headings": "Playfair Display, serif",
+      "heading": "Playfair Display, serif",
       "body": "Lato, sans-serif",
-      "accent": "Cormorant Garamond, serif"
+      "monospace": "Courier New, monospace"
     },
     "scale": {
-      "h1": "text-5xl md:text-7xl font-medium tracking-tight leading-tight",
-      "h2": "text-4xl md:text-5xl font-medium tracking-tight",
-      "h3": "text-2xl md:text-3xl font-normal",
-      "body": "text-base md:text-lg leading-relaxed text-muted-foreground",
-      "label": "text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground"
-    },
-    "imports": [
-      "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
-    ]
+      "h1": "text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight",
+      "h2": "text-3xl md:text-4xl font-semibold tracking-tight",
+      "h3": "text-2xl font-medium",
+      "body_lg": "text-lg leading-relaxed",
+      "body_base": "text-base leading-relaxed",
+      "caption": "text-sm text-muted-foreground"
+    }
   },
   "colors": {
     "palette": {
       "primary": {
-        "name": "Midnight Charcoal",
-        "hex": "#1a1a1a",
-        "tailwind": "bg-[#1a1a1a] text-white"
+        "DEFAULT": "#0F172A",
+        "foreground": "#F8FAFC",
+        "description": "Deep Navy - Authority and Elegance"
       },
       "secondary": {
-        "name": "Artisan Gold",
-        "hex": "#c5a059",
-        "tailwind": "text-[#c5a059] border-[#c5a059]"
+        "DEFAULT": "#F1F5F9",
+        "foreground": "#0F172A",
+        "description": "Soft Gray - Modern and Clean"
+      },
+      "accent": {
+        "DEFAULT": "#D4AF37",
+        "foreground": "#FFFFFF",
+        "description": "Metallic Gold - Luxury highlight (Buttons, Active States)"
       },
       "background": {
-        "light": "#f9f9f7",
-        "dark": "#0f172a",
-        "paper": "#ffffff"
+        "user": "#F9F9F7",
+        "admin": "#F1F5F9",
+        "card": "#FFFFFF"
       },
-      "text": {
-        "main": "#1a1a1a",
-        "muted": "#64748b",
-        "inverted": "#ffffff"
+      "status": {
+        "pending": {
+          "bg": "#FEF3C7",
+          "text": "#92400E",
+          "label": "Warm Amber"
+        },
+        "confirmed": {
+          "bg": "#DCFCE7",
+          "text": "#166534",
+          "label": "Sage Green"
+        },
+        "rejected": {
+          "bg": "#FEE2E2",
+          "text": "#991B1B",
+          "label": "Muted Rose"
+        },
+        "completed": {
+          "bg": "#E0F2FE",
+          "text": "#075985",
+          "label": "Slate Blue"
+        },
+        "cancelled": {
+          "bg": "#F1F5F9",
+          "text": "#475569",
+          "label": "Neutral Gray"
+        }
       }
-    },
-    "theme_strategy": "Light Mode default for 'Studio' feel. Dark mode uses Deep Navy (#0f172a) instead of black for richness.",
-    "gradients": "No gradients. Use solid colors or subtle texture overlays."
+    }
   },
-  "layout_strategies": {
-    "spacing": {
-      "section_padding": "py-24 md:py-32",
-      "container_padding": "px-6 md:px-12",
-      "element_gap": "gap-8 md:gap-12"
+  "layout_strategy": {
+    "user_interface": {
+      "structure": "Single Page App + Modal/Dialogs for interactions",
+      "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+      "spacing": "Generous padding (py-16, py-24) to create 'gallery' feel"
     },
-    "grid_system": {
-      "bento_gallery": "grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[300px]",
-      "service_cards": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-    },
-    "containers": {
-      "max_width": "max-w-7xl mx-auto"
+    "admin_interface": {
+      "structure": "Dashboard Layout (Sidebar + Topbar + Content Area)",
+      "sidebar": "Fixed width (w-64), Dark Theme (bg-slate-900 text-slate-100)",
+      "content_area": "Scrollable, Light Theme (bg-slate-50), Padding (p-8)",
+      "grid_system": "Bento Grid Mode B (High Density) for stats and tables"
     }
   },
   "components": {
     "buttons": {
-      "primary": "rounded-sm bg-[#1a1a1a] text-white px-8 py-4 text-sm font-bold uppercase tracking-[0.1em] hover:bg-[#c5a059] transition-colors duration-300",
-      "secondary": "rounded-sm border border-[#1a1a1a] text-[#1a1a1a] px-8 py-4 text-sm font-bold uppercase tracking-[0.1em] hover:bg-[#1a1a1a] hover:text-white transition-colors duration-300",
-      "outline": "rounded-sm border border-white/20 text-white px-8 py-4 text-sm font-bold uppercase tracking-[0.1em] hover:bg-white hover:text-[#1a1a1a] transition-colors duration-300 backdrop-blur-sm"
+      "primary": "bg-[#0F172A] text-white hover:bg-[#1E293B] rounded-none px-6 py-2 uppercase tracking-wider text-sm font-medium transition-all",
+      "accent": "bg-[#D4AF37] text-white hover:bg-[#B5952F] rounded-none px-6 py-2 uppercase tracking-wider text-sm font-medium shadow-md hover:shadow-lg transition-all",
+      "ghost": "hover:bg-slate-100 text-slate-700 hover:text-slate-900"
     },
     "cards": {
-      "service": "group relative overflow-hidden bg-white border border-stone-100 p-8 hover:shadow-xl transition-all duration-500",
-      "feature": "flex flex-col gap-4 p-6 border-l-2 border-[#c5a059]/30 hover:border-[#c5a059] transition-colors bg-stone-50/50"
+      "user_design": "bg-white border-none shadow-sm hover:shadow-md transition-shadow duration-300 aspect-[3/4] relative group overflow-hidden",
+      "admin_stat": "bg-white border border-slate-100 shadow-sm p-6 rounded-lg flex items-center justify-between",
+      "admin_table_wrapper": "bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden"
     },
     "inputs": {
-      "style": "bg-transparent border-b border-stone-300 px-0 py-3 focus:border-[#c5a059] focus:ring-0 rounded-none transition-colors placeholder:text-stone-400 font-sans"
+      "default": "rounded-none border-slate-200 focus:border-[#D4AF37] focus:ring-[#D4AF37] bg-transparent"
     },
-    "navigation": {
-      "style": "fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-stone-100/50 transition-all duration-300",
-      "link": "text-sm font-medium uppercase tracking-widest hover:text-[#c5a059] transition-colors"
+    "badges": {
+      "base": "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
     }
   },
-  "image_urls": {
-    "hero": {
-      "url": "https://images.unsplash.com/photo-1749096291459-32c38f03e6df?crop=entropy&cs=srgb&fm=jpg&q=85",
-      "alt": "Master tailor hanging a bespoke jacket",
-      "position": "center"
+  "assets": {
+    "images": {
+      "hero_bg": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=1800&q=80",
+      "admin_login_bg": "https://images.unsplash.com/photo-1628565931779-4f4f0b4f578a?auto=format&fit=crop&w=1800&q=80",
+      "placeholder_design": "https://images.unsplash.com/photo-1628565663674-de1c8161d72c?auto=format&fit=crop&w=800&q=80",
+      "placeholder_fabric": "https://images.unsplash.com/photo-1623609163868-7e3228f7135c?auto=format&fit=crop&w=800&q=80",
+      "placeholder_sketch": "https://images.unsplash.com/photo-1695281739803-2819b6a89850?auto=format&fit=crop&w=800&q=80"
     },
-    "about": {
-      "url": "https://images.unsplash.com/photo-1764298493231-59ae059cdc7e?crop=entropy&cs=srgb&fm=jpg&q=85",
-      "alt": "Tailor cutting fabric with precision"
-    },
-    "services": {
-      "bespoke_suit": "https://images.unsplash.com/photo-1633655442329-7b072475166d?crop=entropy&cs=srgb&fm=jpg&q=85",
-      "alterations": "https://images.unsplash.com/photo-1765875485716-a3df3990af2d?crop=entropy&cs=srgb&fm=jpg&q=85",
-      "bridal": "https://images.pexels.com/photos/7717488/pexels-photo-7717488.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-    },
-    "textures": {
-      "fabric_detail": "https://images.unsplash.com/photo-1768102366381-c615ef9d12c9?crop=entropy&cs=srgb&fm=jpg&q=85",
-      "silk_fold": "https://images.pexels.com/photos/14935628/pexels-photo-14935628.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    "icons": {
+      "library": "lucide-react",
+      "usage": "Use thin stroke icons (stroke-width={1.5}) for elegance."
     }
   },
-  "visual_enhancers": {
-    "overlays": "bg-black/20 for image readability. Use 'mix-blend-overlay' for text on textured backgrounds.",
-    "borders": "1px solid border-stone-200 for structure. No heavy borders.",
-    "shadows": "shadow-sm for subtle depth. shadow-2xl for floating elements (modals).",
-    "animations": {
-      "fade_up": "animate-fade-in-up",
-      "hover_lift": "hover:-translate-y-1 transition-transform duration-300"
-    }
+  "accessibility": {
+    "contrast": "Ensure text is readable. Use darker grays (slate-700+) on light backgrounds.",
+    "focus_states": "Visible focus ring on all interactive elements (ring-offset-2 ring-slate-900).",
+    "aria_labels": "Required for all icon-only buttons."
   },
-  "required_sections": [
-    "Navbar (Sticky, Glassmorphism)",
-    "Hero (Full height, Split layout or Background Image)",
-    "About (Storytelling, Image + Text)",
-    "Services (Grid of cards: Bespoke, Alterations, Wedding)",
-    "Gallery (Masonry layout with category tabs)",
-    "Upload Design (Form with drag-and-drop)",
-    "Before & After (Interactive Slider)",
-    "Contact (Map, Info, Hours)",
-    "Appointment Booking (Calendar UI)",
-    "Footer (Minimal, Social Links)"
-  ],
-  "universal_guidelines": {
-    "general": [
-      "Avoid 'AI Slop': No generic centered layouts without purpose.",
-      "Dark colors must be solid, NO gradients.",
-      "Create depth with layered z-indexes.",
-      "Use glassmorphism with backdrop-blur-md or xl.",
-      "NO universal 'transition: all'. Target specific properties.",
-      "NO 'text-align: center' on the main App container.",
-      "Use 'sonner' for toasts.",
-      "Ensure all interactive elements have 'data-testid'."
+  "testing": {
+    "requirement": "All interactive elements MUST have a data-testid attribute.",
+    "convention": "kebab-case, descriptive (e.g., 'admin-login-submit-button', 'order-status-badge-pending')."
+  },
+  "routes_structure": {
+    "public": [
+      { "path": "/", "component": "Home" }
     ],
-    "file_structure": {
-      "components": "src/components/ui",
-      "pages": "src/pages",
-      "utils": "src/lib/utils.js"
-    },
-    "accessibility": "Ensure contrast ratios (WCAG AA). Use aria-labels on icon buttons."
+    "admin": [
+      { "path": "/admin/login", "component": "AdminLogin" },
+      { "path": "/admin/forgot-password", "component": "AdminForgotPassword" },
+      { "path": "/admin/reset-password", "component": "AdminResetPassword" },
+      { "path": "/admin/dashboard", "component": "AdminDashboardLayout", "children": [
+        { "path": "", "component": "DashboardStats" },
+        { "path": "designs", "component": "ManageDesigns" },
+        { "path": "orders", "component": "ManageOrders" },
+        { "path": "appointments", "component": "ManageAppointments" }
+      ]}
+    ]
   },
-  "instructions_to_main_agent": "You are building a high-end Tailor Shop website. Use the provided JSON to guide your styling. Focus on the 'Quiet Luxury' aesthetic—lots of whitespace, elegant serif fonts, and high-quality images. The 'Upload Design' and 'Appointment' features are critical functional requirements. Use shadcn/ui components but style them to match the 'Artisan' theme (square corners, serif fonts in headers). Implement the 'Before & After' slider using a custom component or library if available, ensuring it is touch-friendly."
+  "universal_guidelines": [
+    "Do NOT use gradients for backgrounds unless specified.",
+    "Use 'sonner' for all toast notifications.",
+    "Maintain the existing 'Navy/Gold' aesthetic for user-facing pages.",
+    "Ensure the Admin Dashboard is responsive but optimized for Desktop.",
+    "Use 'lucide-react' for all icons.",
+    "Add 'data-testid' to EVERY interactive element.",
+    "Strictly follow the color palette.",
+    "Do not remove existing functionalities while adding new ones."
+  ],
+  "instructions_to_main_agent": "You are building Phase 2. This involves refactoring App.js into a proper routing structure. \n1. Create a `Layout` component for the admin dashboard. \n2. Create the Admin pages (Login, Dashboard, etc.). \n3. Connect the Admin pages to the Backend API (you will need to assume or create endpoints for these). \n4. Update the User Home page to fetch 'Designs' from the backend instead of hardcoded lists if possible, or prepare it for that integration. \n5. Ensure Authentication state management (store token in localStorage). \n6. STRICTLY follow the 'Quiet Luxury' design guidelines."
 }
