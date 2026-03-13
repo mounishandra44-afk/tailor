@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+"use client"
+import { useEffect, useMemo, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { BarChart3, CalendarClock, ClipboardList, LogOut, Palette, RefreshCcw, ShoppingCart } from "lucide-react";
@@ -46,9 +47,11 @@ export default function AdminDashboardPage() {
   const [appointmentStatusDraft, setAppointmentStatusDraft] = useState({});
   const [orderStatusDraft, setOrderStatusDraft] = useState({});
 
+  // Memoize headers so they don't trigger unnecessary re-renders of loadDashboard
   const headers = useMemo(() => authHeaders(), []);
 
-  const loadDashboard = async () => {
+  // 1. Define loadDashboard with useCallback to stabilize the reference
+  const loadDashboard = useCallback(async () => {
     setLoading(true);
     try {
       const [meRes, statsRes, designsRes, appointmentsRes, ordersRes] = await Promise.all([
@@ -68,19 +71,23 @@ export default function AdminDashboardPage() {
       setAppointmentStatusDraft(
         Object.fromEntries((appointmentsRes.data || []).map((item) => [item.id, item.status]))
       );
-      setOrderStatusDraft(Object.fromEntries((ordersRes.data || []).map((item) => [item.id, item.status])));
+      setOrderStatusDraft(
+        Object.fromEntries((ordersRes.data || []).map((item) => [item.id, item.status]))
+      );
     } catch (error) {
+      console.error("Dashboard load error:", error);
       localStorage.removeItem("tailor_admin_token");
       toast.error("Session expired. Please login again.");
       navigate("/admin/login");
     } finally {
       setLoading(false);
     }
-  };
+  }, [headers, navigate]);
 
+  // 2. Trigger loadDashboard once on mount
   useEffect(() => {
     loadDashboard();
-  }, []);
+  }, [loadDashboard]);
 
   const createDesign = async (event) => {
     event.preventDefault();

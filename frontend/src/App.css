@@ -288,7 +288,11 @@ html {
     background: rgb(255 255 255 / 12%);
     border-radius: 6px;
     padding: 0.3rem;
-    width: fit-content;
+    width: full;
+    display: flex;
+    justify-content: space-between;
+    max-width: 375px !important;
+
 }
 
 .gallery-tab-trigger {
